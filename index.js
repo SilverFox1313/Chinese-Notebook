@@ -45,7 +45,7 @@ function renderCards(data) {
     const selectBtn = document.createElement("button");
     selectBtn.textContent = "Select";
     selectBtn.className = `
-            text-sm px-3 py-1 mt-8 bg-blue-500 text-white rounded hover:bg-blue-600 transition
+            text-sm px-6 py-1.5 mt-5 bg-blue-500 text-white rounded hover:bg-blue-600 transition
         `;
     selectBtn.addEventListener("click", (e) => {
       e.stopPropagation(); // Evita el flip
