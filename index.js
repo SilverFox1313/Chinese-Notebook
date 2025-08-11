@@ -100,11 +100,18 @@ function renderCards(data) {
 // Inicializar
 renderCards(charts);
 
+function removeDiacritics(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 // Filtrar
 input.addEventListener("input", (e) => {
-  const query = e.target.value.trim().toLowerCase();
-  const filtered = charts.filter(({ sound }) =>
-    sound.toLowerCase().includes(query)
-  );
+  const query = removeDiacritics(e.target.value.trim().toLowerCase());
+
+  const filtered = charts.filter(({ sound }) => {
+    const normalizedSound = removeDiacritics(sound.toLowerCase());
+    return normalizedSound.includes(query);
+  });
+
   renderCards(filtered);
 });
