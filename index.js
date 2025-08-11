@@ -14,6 +14,17 @@ const charts = [
   { word: "呢", sound: "Ne" },
   { word: "妈", sound: "Mā" },
   { word: "爸", sound: "Bà" },
+  { word: "哥", sound: "Gē" },
+  { word: "姐", sound: "Jiě" },
+  { word: "的", sound: "De" },
+  { word: "手", sound: "Shǒu" },
+  { word: "机", sound: "Jī" },
+  { word: "这", sound: "Zhè" },
+  { word: "儿", sound: "Ér" },
+  { word: "子", sound: "Zǐ" },
+  { word: "女", sound: "Nǚ" },
+  { word: "他", sound: "Tā" },
+  { word: "她", sound: "Tā" },
 ];
 
 const section = document.getElementById("chart-section");
