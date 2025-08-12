@@ -29,7 +29,6 @@ const charts = [
   { word: "有", sound: "Yǒu" },
   { word: "两", sound: "Liǎng" },
   { word: "孩", sound: "Hái" },
-  { word: "子", sound: "Zi" },
   { word: "问", sound: "Wèn" },
   { word: "题", sound: "Tí" },
   { word: "多", sound: "Duō" },
@@ -63,13 +62,6 @@ const charts = [
   { word: "果", sound: "Guǒ" },
   { word: "橙", sound: "Chéng" },
   { word: "和", sound: "Hé" },
-  { word: "妈", sound: "Mā" },
-  { word: "爸", sound: "Bà" },
-  { word: "哥", sound: "Gē" },
-  { word: "姐", sound: "Jiě" },
-  { word: "的", sound: "De" },
-  { word: "手", sound: "Shǒu" },
-  { word: "机", sound: "Jī" }
 ];
 
 
