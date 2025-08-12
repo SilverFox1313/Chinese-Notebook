@@ -14,7 +14,64 @@ const charts = [
   { word: "呢", sound: "Ne" },
   { word: "妈", sound: "Mā" },
   { word: "爸", sound: "Bà" },
+  { word: "哥", sound: "Gē" },
+  { word: "姐", sound: "Jiě" },
+  { word: "的", sound: "De" },
+  { word: "手", sound: "Shǒu" },
+  { word: "机", sound: "Jī" },
+  { word: "这", sound: "Zhè" },
+  { word: "儿", sound: "Ér" },
+  { word: "子", sound: "Zǐ" },
+  { word: "女", sound: "Nǚ" },
+  { word: "他", sound: "Tā" },
+  { word: "她", sound: "Tā" },
+  { word: "没", sound: "Méi" },
+  { word: "有", sound: "Yǒu" },
+  { word: "两", sound: "Liǎng" },
+  { word: "孩", sound: "Hái" },
+  { word: "子", sound: "Zi" },
+  { word: "问", sound: "Wèn" },
+  { word: "题", sound: "Tí" },
+  { word: "多", sound: "Duō" },
+  { word: "喝", sound: "Hē" },
+  { word: "水", sound: "Shuǐ" },
+  { word: "说", sound: "Shuō" },
+  { word: "什", sound: "Shén" },
+  { word: "么", sound: "Me" },
+  { word: "只", sound: "Zhǐ" },
+  { word: "语", sound: "Yǔ" },
+  { word: "言", sound: "Yán" },
+  { word: "会", sound: "Huì" },
+  { word: "英", sound: "Yīng" },
+  { word: "法", sound: "Fǎ" },
+  { word: "德", sound: "Dé" },
+  { word: "汉", sound: "Hàn" },
+  { word: "一", sound: "Yī" },
+  { word: "二", sound: "Èr" },
+  { word: "三", sound: "Sān" },
+  { word: "四", sound: "Sì" },
+  { word: "个", sound: "Gè" },
+  { word: "喜", sound: "Xǐ" },
+  { word: "欢", sound: "Huan" },
+  { word: "茶", sound: "Chá" },
+  { word: "咖", sound: "Kā" },
+  { word: "啡", sound: "Fēi" },
+  { word: "也", sound: "Yě" },
+  { word: "酒", sound: "Jiǔ" },
+  { word: "吃", sound: "Chī" },
+  { word: "苹", sound: "Píng" },
+  { word: "果", sound: "Guǒ" },
+  { word: "橙", sound: "Chéng" },
+  { word: "和", sound: "Hé" },
+  { word: "妈", sound: "Mā" },
+  { word: "爸", sound: "Bà" },
+  { word: "哥", sound: "Gē" },
+  { word: "姐", sound: "Jiě" },
+  { word: "的", sound: "De" },
+  { word: "手", sound: "Shǒu" },
+  { word: "机", sound: "Jī" }
 ];
+
 
 const section = document.getElementById("chart-section");
 const input = document.getElementById("search-input");
@@ -45,7 +102,7 @@ function renderCards(data) {
     const selectBtn = document.createElement("button");
     selectBtn.textContent = "Select";
     selectBtn.className = `
-            text-sm px-3 py-1 mt-8 bg-blue-500 text-white rounded hover:bg-blue-600 transition
+            text-sm px-6 py-1.5 mt-5 bg-blue-500 text-white rounded hover:bg-blue-600 transition
         `;
     selectBtn.addEventListener("click", (e) => {
       e.stopPropagation(); // Evita el flip
@@ -89,11 +146,18 @@ function renderCards(data) {
 // Inicializar
 renderCards(charts);
 
+function removeDiacritics(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 // Filtrar
 input.addEventListener("input", (e) => {
-  const query = e.target.value.trim().toLowerCase();
-  const filtered = charts.filter(({ sound }) =>
-    sound.toLowerCase().includes(query)
-  );
+  const query = removeDiacritics(e.target.value.trim().toLowerCase());
+
+  const filtered = charts.filter(({ sound }) => {
+    const normalizedSound = removeDiacritics(sound.toLowerCase());
+    return normalizedSound.includes(query);
+  });
+
   renderCards(filtered);
 });
